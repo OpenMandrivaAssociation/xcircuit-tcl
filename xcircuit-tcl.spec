@@ -1,15 +1,15 @@
 %define release %mkrel 1
 
 %define nameorig xcircuit
-%define version 3.4.26
+%define version 3.4.27
 
 Summary: Electronic circuit schematic drawing program
 Name: %{nameorig}-tcl
 Version: %{version}
 Release: %{release}
-License: GPL
+License: GPLv2+
 Group: Sciences/Other
-Source0: 	%{nameorig}-%{version}.tar.bz2
+Source0: 	http://opencircuitdesign.com/xcircuit/archive/%{nameorig}-%{version}.tgz
 Source1:	%{nameorig}.16.png
 Source2:	%{nameorig}.32.png
 Source3:	%{nameorig}.48.png
@@ -38,19 +38,6 @@ is PostScript.  TCL scripting is available.
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
-# Mandrake Menu entry
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat <<EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): \
-needs="x11" \
-section="More Applications/Sciences/Electricity" \
-title="XCircuit" \
-longtitle="Electronic circuit schematic drawing program" \
-command="/usr/bin/xcircuit" needs="X11" \
-icon="%{name}.png"\
-xdg="true"
-EOF
-
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
@@ -60,7 +47,7 @@ Exec=%{_bindir}/xcircuit
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=X-MandrivaLinux-MoreApplications-Sciences-Electricity;Science;Electronics;
+Categories=Science;Electronics;
 EOF
 
 mkdir -p $RPM_BUILD_ROOT%{_miconsdir} $RPM_BUILD_ROOT%{_liconsdir} $RPM_BUILD_ROOT%{_iconsdir}
@@ -87,6 +74,4 @@ rm -Rf $RPM_BUILD_ROOT
 %{_iconsdir}/%{name}.*
 %{_miconsdir}/%{name}.*
 %{_liconsdir}/%{name}.*
-%{_menudir}/%{name}
 %{_datadir}/applications/*.desktop
-
