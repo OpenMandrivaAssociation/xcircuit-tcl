@@ -14,6 +14,7 @@ Source1:	%{nameorig}.16.png
 Source2:	%{nameorig}.32.png
 Source3:	%{nameorig}.48.png
 URL: http://opencircuitdesign.com/xcircuit
+BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: tcl >= 8.4.11 tk >= 8.4.11
 BuildRequires: tcl-devel >= 8.4.11 tk-devel >= 8.4.11
 BuildRequires: libxpm-devel
