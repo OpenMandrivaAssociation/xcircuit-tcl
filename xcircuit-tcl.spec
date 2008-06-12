@@ -57,11 +57,15 @@ cp %{SOURCE3}  $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 
 chmod 644 $RPM_BUILD_ROOT/%{_prefix}/lib/xcircuit-3.4/console.tcl
 
+%if %mdkversion < 200900
 %post
 %{update_menus}
+%endif
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
+%endif
 
 %clean
 rm -Rf $RPM_BUILD_ROOT
