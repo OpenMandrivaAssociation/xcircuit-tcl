@@ -1,7 +1,8 @@
-%define release %mkrel 4
+%define _disable_ld_no_undefined 1
+%define release %mkrel 1
 
 %define nameorig xcircuit
-%define version 3.4.27
+%define version 3.4.30
 
 Summary: Electronic circuit schematic drawing program
 Name: %{nameorig}-tcl
@@ -47,7 +48,7 @@ Exec=%{_bindir}/xcircuit
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=Science;Electronics;
+Categories=Electronics
 EOF
 
 mkdir -p $RPM_BUILD_ROOT%{_miconsdir} $RPM_BUILD_ROOT%{_liconsdir} $RPM_BUILD_ROOT%{_iconsdir}
