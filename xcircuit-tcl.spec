@@ -1,5 +1,4 @@
-%define _disable_ld_no_undefined 1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define nameorig xcircuit
 %define version 3.4.30
@@ -14,6 +13,7 @@ Source0: 	http://opencircuitdesign.com/xcircuit/archive/%{nameorig}-%{version}.t
 Source1:	%{nameorig}.16.png
 Source2:	%{nameorig}.32.png
 Source3:	%{nameorig}.48.png
+Patch0:		xcircuit-fix-linkage.patch
 URL: http://opencircuitdesign.com/xcircuit
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: tcl >= 8.4.11 tk >= 8.4.11
@@ -30,14 +30,16 @@ is PostScript.  TCL scripting is available.
 
 %prep
 %setup -q -n %{nameorig}-%{version}
+%patch0 -p0
 
 %build
-%configure --with-tcl --with-tcllibs=%{_libdir} --with-tklibs=%{_libdir}
+autoreconf
+%configure2_5x --with-tcl --with-tcllibs=%{_libdir} --with-tklibs=%{_libdir}
 %make tcl
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+rm -rf %buildroot
+%makeinstall_std
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
