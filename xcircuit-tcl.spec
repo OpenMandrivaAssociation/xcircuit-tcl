@@ -1,4 +1,4 @@
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define nameorig xcircuit
 %define version 3.4.30
@@ -9,12 +9,13 @@ Version: %{version}
 Release: %{release}
 License: GPLv2+
 Group: Sciences/Other
+URL: http://opencircuitdesign.com/xcircuit
 Source0: 	http://opencircuitdesign.com/xcircuit/archive/%{nameorig}-%{version}.tgz
 Source1:	%{nameorig}.16.png
 Source2:	%{nameorig}.32.png
 Source3:	%{nameorig}.48.png
 Patch0:		xcircuit-fix-linkage.patch
-URL: http://opencircuitdesign.com/xcircuit
+Patch1:		xcircuit-3.4.30-fix-format-errors.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: tcl >= 8.4.11 tk >= 8.4.11
 BuildRequires: tcl-devel >= 8.4.11 tk-devel >= 8.4.11
@@ -31,6 +32,7 @@ is PostScript.  TCL scripting is available.
 %prep
 %setup -q -n %{nameorig}-%{version}
 %patch0 -p0
+%patch1 -p1
 
 %build
 autoreconf
