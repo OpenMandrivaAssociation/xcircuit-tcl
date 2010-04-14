@@ -1,4 +1,4 @@
-%define release %mkrel 4
+%define release %mkrel 5
 
 %define nameorig xcircuit
 %define version 3.4.30
@@ -23,6 +23,8 @@ BuildRequires: libxpm-devel
 BuildRequires: X11-devel
 Obsoletes: %{nameorig} %{nameorig}-python
 Provides: %{nameorig} %{nameorig}-python
+Requires: tcl >= 8.4.11
+Requires: tk >= 8.4.11
 
 %description
 Xcircuit is a general-purpose drawing program and also a specific-purpose
