@@ -1,0 +1,30 @@
+diff -Naur xcircuit-3.4.30/tclxcircuit.c xcircuit-3.4.30-fix-format-errors/tclxcircuit.c
+--- xcircuit-3.4.30/tclxcircuit.c	2007-09-14 23:18:33.000000000 +0200
++++ xcircuit-3.4.30-fix-format-errors/tclxcircuit.c	2009-03-05 21:30:02.000000000 +0100
+@@ -5707,7 +5707,7 @@
+       case LoadIdx:
+ 	 save_replace = xobjs.do_replace;
+ 	 xobjs.do_replace = -1;
+-	 sprintf(_STR2, Tcl_GetString(objv[2 + nidx]));
++	 sprintf(_STR2, "%s", Tcl_GetString(objv[2 + nidx]));
+ 	 for (i = 3 + nidx; i < objc; i++) {
+ 	    char *argv = Tcl_GetString(objv[i]);
+ 	    if ((*argv == '-') && !strncmp(argv, "-repl", 5)) {
+@@ -5787,7 +5787,7 @@
+ 
+ 	 switch (importtype) {
+ 	    case XCircuitIdx:
+-	       sprintf(_STR2, Tcl_GetString(objv[3 + nidx]));
++	       sprintf(_STR2, "%s", Tcl_GetString(objv[3 + nidx]));
+ 	       for (i = 4; i < objc; i++) {
+ 		  strcat(_STR2, ",");
+ 		  strcat(_STR2, Tcl_GetString(objv[i + nidx]));
+@@ -5804,7 +5804,7 @@
+ 		  Tcl_SetObjResult(interp, objPtr);
+ 		  return XcTagCallback(interp, objc, objv);
+ 	       }
+-	       sprintf(_STR2, Tcl_GetString(objv[3 + nidx]));
++	       sprintf(_STR2, "%s", Tcl_GetString(objv[3 + nidx]));
+ 	       if (savepage != pageno) newpage(pageno);
+ 	       loadbackground();
+ 	       if (savepage != pageno) newpage(savepage);

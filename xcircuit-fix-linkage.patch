@@ -1,0 +1,11 @@
+--- Makefile.am.orig	2007-09-14 23:18:33.000000000 +0200
++++ Makefile.am	2008-11-24 07:00:20.000000000 +0100
+@@ -86,7 +86,7 @@
+ 	tclxcircuit.c tkSimple.c xcircuit.c
+ 
+ xcircuit_DEPEND = @SUBLIB@
+-xcircuit_LDADD = @SUBLIB@ @STDLIBS@
++xcircuit_LDADD = @SUBLIB@ @STDLIBS@ @LIB_SPECS@
+ 
+ help.c: menudep.h
+ menucalls.c: menudep.h
