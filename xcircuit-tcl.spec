@@ -9,7 +9,7 @@ Version: %{version}
 Release: %{release}
 License: GPLv2+
 Group: Sciences/Other
-URL: http://opencircuitdesign.com/xcircuit
+URL: https://opencircuitdesign.com/xcircuit
 Source0: 	http://opencircuitdesign.com/xcircuit/archive/%{nameorig}-%{version}.tgz
 Source1:	%{nameorig}.16.png
 Source2:	%{nameorig}.32.png
