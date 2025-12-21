@@ -17,6 +17,11 @@ Source3:	%{nameorig}.48.png
 Patch0:		xcircuit-fix-linkage.patch
 Patch1:		xcircuit-3.4.30-fix-format-errors.patch
 BuildRoot: %{_tmppath}/%{name}-root
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: tcl >= 8.4.11 tk >= 8.4.11
 BuildRequires: tcl-devel >= 8.4.11 tk-devel >= 8.4.11
 BuildRequires: libxpm-devel
