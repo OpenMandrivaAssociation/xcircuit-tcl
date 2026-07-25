@@ -1,4 +1,4 @@
-%define release %mkrel 6
+%define release 7
 
 %define nameorig xcircuit
 %define version 3.4.30
